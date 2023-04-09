@@ -1,4 +1,4 @@
-FROM debian:bullseye-20211220 as builder
+FROM debian:bullseye-20230320 as builder
 
 WORKDIR /tmp/workdir
 
