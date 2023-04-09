@@ -8,13 +8,13 @@ RUN sed -i 's@archive.ubuntu.com@ftp.riken.go.jp/pub/Linux@g' /etc/apt/sources.l
 ENV DEBIAN_FRONTEND=noninteractive
 
 ## 必要なパッケージを入れる.
-RUN apt update \
-  && apt install -y --no-install-recommends \
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
   ca-certificates expat libgomp1 \
   autoconf automake cmake curl bzip2 libexpat1-dev \
   g++ gcc gcc-9 git gperf libtool make perl pkg-config python \
   python3-pip ninja-build libssl-dev zlib1g-dev libboost-all-dev \
-  && apt autoremove -y && apt clean -y  \
+  && apt-get autoremove -y && apt-get clean -y  \
   && pip3 install --upgrade pip setuptools && pip3 install meson
 
 ENV FFMPEG_VERSION=n4.3.1 \
@@ -671,7 +671,7 @@ COPY  --from=builder /tmp/EPGStation /app
 
 WORKDIR /join_logo_scp_trial
 RUN bash setup_node.x &&  \
-  apt update && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends \
+  apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
   nodejs libboost-filesystem-dev \
   libboost-program-options-dev \
   libboost-system-dev libnuma-dev && \
