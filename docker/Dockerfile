@@ -671,7 +671,7 @@ COPY  --from=builder /tmp/EPGStation /app
 
 WORKDIR /join_logo_scp_trial
 RUN bash setup_node.x &&  \
-  apt update && apt install -y --no-install-recommends \
+  apt update && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends \
   nodejs libboost-filesystem-dev \
   libboost-program-options-dev \
   libboost-system-dev libnuma-dev && \
